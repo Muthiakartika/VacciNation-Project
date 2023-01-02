@@ -1,0 +1,19 @@
+{
+    "english": "Inggris",
+    "indonesian": "Indonesia",
+    "add-healthcare" : "Tambah Rumah Sakit",
+    "add-vaccine" : "Tambah Vaksin",
+    "regis-healthcare" : "Daftar Admin Rumah Sakit",
+    "vaccine-history" : "List Riwayat Vaksinasi",
+    "record-vaccine" : "Mencatat Batch Vaksin",
+    "vaccine-info" : "List Informasi Vaksin",
+    "request-vaccination" : "Membuat Janji Temu Vaksinasi",
+    "view-status" : "Status Vaksinasi",
+    "view-queue" : "Antrian Vaksinasi",
+    "manage profile" : "Atur Profil",
+    "logout" : "Keluar",
+    "change password" : "Ganti Password",
+    "profile update" : "Perbarui profil",
+    "healthcare": "Pusat Kesehatan",
+    "patient": "Pasien"
+}
