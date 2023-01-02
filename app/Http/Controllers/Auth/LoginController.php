@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-
 class LoginController extends Controller
 {
     /*
@@ -45,26 +44,26 @@ class LoginController extends Controller
         $inputVal = $request->all();
 
         $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|8',
+            'email' => 'required | max:255 | email',
+            'password' => 'required | max:64 | min:8',
         ]);
 
         if(auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']),
             $request->get('remember'))){
             if (auth()->user()->role == 'SuperAdmin') {
-                return redirect()->route('superadmin-home');
+                return redirect()->route('super-admin.home');
             }
             elseif (auth()->user()->role == 'HealthcareAdmin') {
-                return redirect()->route('adminhc-home');
+                return redirect()->route('healthcare-admin.home');
             }
             elseif (auth()->user()->role == 'Patient') {
-                return redirect()->route('patient-home');
+                return redirect()->route('patient.home');
             }
             else {
                 return redirect()->route('home');
             }
         }else{
-            return redirect()->route('login')->with('error','Email & Password are incorrect.');
+            return redirect()->route('login')->with('error','Email or Password are incorrect.');
         }
     }
 }

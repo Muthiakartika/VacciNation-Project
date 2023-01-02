@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\batch;
-use App\Models\healthcare;
-use App\Models\vaccine;
+use App\Models\Batch;
+use App\Models\Healthcare;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,8 +32,10 @@ class BatchController extends Controller
      */
     public function create()
     {
-        $vaccine = vaccine::all();
-        $healthcare = healthcare::all();
+        // TAKING VACCINE DATA FROM THE MODEL
+        $vaccine = Vaccine::all();
+        // TAKING HEALTHCARE DATA FROM THE MODEL
+        $healthcare = Healthcare::all();
         return view('batch.create', compact( 'vaccine', 'healthcare'));
     }
 
@@ -53,21 +55,21 @@ class BatchController extends Controller
             'centreName' => 'required',
         ]);
 
-        // record new batch
-        batch::create($request->all());
+
+        Batch::create($request->all());
 
         //redirect to registration form
-        return redirect()->route('record-batch.index')
+        return redirect()->route('batches.index')
             ->with('success', "Batch data added successfully");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\batch  $batch
+     * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function show(batch $batch)
+    public function show(Batch $batch)
     {
         //
     }
@@ -75,10 +77,10 @@ class BatchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\batch  $batch
+     * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function edit(batch $batch)
+    public function edit(Batch $batch)
     {
         //
     }
@@ -87,10 +89,10 @@ class BatchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\batch  $batch
+     * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, batch $batch)
+    public function update(Request $request, Batch $batch)
     {
         //
     }
@@ -98,10 +100,10 @@ class BatchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\batch  $batch
+     * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(batch $batch)
+    public function destroy(Batch $batch)
     {
         //
     }

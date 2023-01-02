@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\vaccine;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 
 class VaccineController extends Controller
@@ -14,7 +14,7 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        $vaccine = vaccine::latest()->paginate(5);
+        $vaccine = Vaccine::all();
         return view('vaccine.index', compact('vaccine'))
             ->with('i', (request()->input('page', 1)-1)*5);
     }
@@ -46,18 +46,17 @@ class VaccineController extends Controller
         vaccine::create($request->all());
 
         //redirect to registration form
-        return redirect()->route('add-vaccine.index')
+        return redirect()->route('vaccine.index')
             ->with('success', "Vaccine data added successfully");
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\vaccine  $vaccine
+     * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function show(vaccine $vaccine)
+    public function show(Vaccine $vaccine)
     {
         //
     }
@@ -65,10 +64,10 @@ class VaccineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\vaccine  $vaccine
+     * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function edit(vaccine $vaccine)
+    public function edit(Vaccine $vaccine)
     {
         //
     }
@@ -77,10 +76,10 @@ class VaccineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\vaccine  $vaccine
+     * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vaccine $vaccine)
+    public function update(Request $request, Vaccine $vaccine)
     {
         //
     }
@@ -88,10 +87,10 @@ class VaccineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\vaccine  $vaccine
+     * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vaccine $vaccine)
+    public function destroy(Vaccine $vaccine)
     {
         //
     }

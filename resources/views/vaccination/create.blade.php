@@ -8,9 +8,12 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Vaccination Form</h1>
 
-        @if(session()->has('error'))
-            <div class="alert alert-danger">
-                {{session('error')}}
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
 
@@ -57,18 +60,26 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Form Input</h6>
+                <h6 class="m-0 font-weight-bold text-success">Form Input</h6>
             </div>
             <div class="card-body">
 
-                <form method="POST" action="{{route('appointment-vaccination.store')}}">
+                <form method="POST" action="{{route('vaccinations.store')}}">
                     @csrf
-                    <input class="form-control" type="hidden" name="name" value="{{auth()->user()->name}}">
+
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" name="patientName" value="{{auth()->user()->name}}">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" name="email" value="{{auth()->user()->email}}">
+                    </div>
+
                     <div class="form-group">
                         <label for="vaccineDose">Vaccine Dose <span class="text-danger">*</span></label>
-                        <select type="text" class="form-control form-control-user @error('vaccineDose') is-invalid @enderror"
+                        <select type="text" class="form-control  @error('vaccineDose') is-invalid @enderror"
                                 name="vaccineDose" onchange="showDiv(this)">
-                            <option value="#" disabled selected>--- Vaccine Dose  ---</option>
+                            <option value="#" disabled selected>Vaccine Dose</option>
                             <option value="1 Dose" >First Dose</option>
                             <option value="2 Dose" >Second Dose</option>
                             <option value="Booster" >Booster</option>
@@ -79,6 +90,7 @@
                         </span>
                         @enderror
                     </div>
+
                     <div class="form-group">
                         <label>Batch No<span class="text-danger">*</span></label>
                         <input class="form-control @error('batchNo') is-invalid @enderror " type="text" name="batchNo">
@@ -88,6 +100,7 @@
                         </div>
                         @enderror
                     </div>
+
                     <div class="form-group">
                         <label>Appointment Date<span class="text-danger">*</span></label>
                         <input class="form-control @error('appointmentDate') is-invalid @enderror"
@@ -98,8 +111,9 @@
                         </span>
                         @enderror
                     </div>
+
                     <div class="form-group">
-                        <a class="btn btn-primary" href="{{route('appointment-vaccination.index')}}">Back</a>
+                        <a class="btn btn-primary" href="{{route('vaccinations.index')}}">Back</a>
                         <input class="btn btn-success" type="submit" value="Submit">
                     </div>
                 </form>

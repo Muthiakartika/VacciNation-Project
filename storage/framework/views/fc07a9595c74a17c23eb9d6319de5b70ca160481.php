@@ -6,10 +6,13 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Vaccination Form</h1>
 
-        <?php if(session()->has('error')): ?>
-            <div class="alert alert-danger">
-                <?php echo e(session('error')); ?>
+        <?php if($message = Session::get('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo e($message); ?>
 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         <?php endif; ?>
 
@@ -56,16 +59,24 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Form Input</h6>
+                <h6 class="m-0 font-weight-bold text-success">Form Input</h6>
             </div>
             <div class="card-body">
 
-                <form method="POST" action="<?php echo e(route('appointment-vaccination.store')); ?>">
+                <form method="POST" action="<?php echo e(route('vaccinations.store')); ?>">
                     <?php echo csrf_field(); ?>
-                    <input class="form-control" type="hidden" name="name" value="<?php echo e(auth()->user()->name); ?>">
+
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" name="patientName" value="<?php echo e(auth()->user()->name); ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" name="email" value="<?php echo e(auth()->user()->email); ?>">
+                    </div>
+
                     <div class="form-group">
                         <label for="vaccineDose">Vaccine Dose <span class="text-danger">*</span></label>
-                        <select type="text" class="form-control form-control-user <?php $__errorArgs = ['vaccineDose'];
+                        <select type="text" class="form-control  <?php $__errorArgs = ['vaccineDose'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -74,7 +85,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
                                 name="vaccineDose" onchange="showDiv(this)">
-                            <option value="#" disabled selected>--- Vaccine Dose  ---</option>
+                            <option value="#" disabled selected>Vaccine Dose</option>
                             <option value="1 Dose" >First Dose</option>
                             <option value="2 Dose" >Second Dose</option>
                             <option value="Booster" >Booster</option>
@@ -92,6 +103,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
+
                     <div class="form-group">
                         <label>Batch No<span class="text-danger">*</span></label>
                         <input class="form-control <?php $__errorArgs = ['batchNo'];
@@ -116,6 +128,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
+
                     <div class="form-group">
                         <label>Appointment Date<span class="text-danger">*</span></label>
                         <input class="form-control <?php $__errorArgs = ['appointmentDate'];
@@ -140,8 +153,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
+
                     <div class="form-group">
-                        <a class="btn btn-primary" href="<?php echo e(route('appointment-vaccination.index')); ?>">Back</a>
+                        <a class="btn btn-primary" href="<?php echo e(route('vaccinations.index')); ?>">Back</a>
                         <input class="btn btn-success" type="submit" value="Submit">
                     </div>
                 </form>

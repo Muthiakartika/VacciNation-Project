@@ -16,10 +16,9 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role = "SuperAdmin")
-        {
+        if (auth()->user()->role == "SuperAdmin") {
             return $next($request);
         }
-        return redirect('home')->with('error',"Only admin can access!");
+        abort(403);
     }
 }

@@ -1,13 +1,14 @@
 {
     "name": "laravel-mix",
-    "version": "6.0.43",
+    "version": "6.0.49",
     "description": "The power of webpack, distilled for the rest of us.",
     "main": "src/index.js",
     "types": "types/index.d.ts",
     "scripts": {
         "mix": "./bin/cli.js",
         "test": "cd test && ava --verbose --timeout=30s --no-worker-threads",
-        "eslint": "eslint setup/ src/ test/ --max-warnings=0"
+        "lint:style": "eslint setup/ src/ test/ --max-warnings=0",
+        "lint:types": "tsc --noEmit --skipLibCheck -p ."
     },
     "husky": {
         "hooks": {
@@ -106,6 +107,7 @@
         "@types/sinon": "^10.0.6",
         "@types/supertest": "^2.0.11",
         "@types/yargs": "^17.0.2",
+        "@typescript-eslint/parser": "^5.23.0",
         "@vue/compiler-sfc": "^3.2.20",
         "ava": "^4.0.0-rc.1",
         "browserslist": "^4.17.5",
@@ -142,7 +144,7 @@
         "temp-sandbox": "^4.0.1",
         "ts-loader": "^9.2.6",
         "tsc": "^2.0.3",
-        "typescript": "^4.4.4",
+        "typescript": "^4.6.4",
         "vue-loader15": "npm:vue-loader@^15.9.8",
         "vue-loader16": "npm:vue-loader@^16.8.2",
         "vue-template-compiler": "^2.6.14",

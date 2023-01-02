@@ -6,61 +6,69 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Healthcare Centre Table</h1>
-        <p class="mb-4">
-        @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif</p>
+        <h1 class="h3 mb-2 text-gray-800">Form Add New Healthcare Centre</h1>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-success">Data Healthcare Centre</h6>
+        <p class="mb-4">
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <a href="{{route('add-healthcare.create')}}" class="btn btn-outline-success">Add New Healthcare Centre</a>
-                    <br>
-                    <br>
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Centre Name</th>
-                            <th>Address</th>
-                            <th>Phone Number</th>
-                            <th>Operational Day</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Centre Name</th>
-                            <th>Address</th>
-                            <th>Phone Number</th>
-                            <th>Operational Day</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        @php
-                            $i = 0;
-                        @endphp
-                        @foreach($healthcare as $datahc)
+        @elseif ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-6">
+                    <a href="{{route('healthcare.create')}}" class="btn btn-success">Add New Healthcare Centre</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                             <tr>
-                                <td>{{++$i}}</td>
-                                <td>{{$datahc->centreName}}</td>
-                                <td>{{$datahc->address}}</td>
-                                <td>{{$datahc->phone}}</td>
-                                <td>{{$datahc->optDay}}</td>
+                                <th>No</th>
+                                <th>Centre Name</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
+                                <th>Operational Day</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Centre Name</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
+                                <th>Operational Day</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach($healthcare as $datahc)
+                                <tr>
+                                    <td>{{++$i}}</td>
+                                    <td>{{$datahc->centreName}}</td>
+                                    <td>{{$datahc->address}}</td>
+                                    <td>{{$datahc->phone}}</td>
+                                    <td>{{$datahc->optDay}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
     </div>
     <!-- /.container-fluid -->

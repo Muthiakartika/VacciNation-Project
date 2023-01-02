@@ -6,23 +6,32 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Vaccines Table</h1>
         <p class="mb-4">
-        <?php if(session()->has('success')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('success')); ?>
+        <?php if($message = Session::get('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo e($message); ?>
 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <?php endif; ?></p>
+        <?php elseif($message = Session::get('success')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php echo e($message); ?>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php endif; ?>
+            </p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-success">Data Vaccines</h6>
+                <div class="card-header py-6">
+                    <a href="<?php echo e(route('vaccine.create')); ?>" class="btn btn-md btn-success">Add New Vaccine</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="<?php echo e(route('add-vaccine.create')); ?>" class="btn btn-outline-success">Add New Vaccine</a>
-                        <br>
-                        <br>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -51,8 +60,6 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
-                        <?php echo $vaccine->links(); ?>
-
                     </div>
                 </div>
             </div>

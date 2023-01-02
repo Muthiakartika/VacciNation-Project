@@ -4,25 +4,33 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Batch Table</h1>
+        <h1 class="h3 mb-2 text-gray-800">Batch</h1>
 
-            <?php if(session()->has('success')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('success')); ?>
+        <?php if($message = Session::get('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo e($message); ?>
 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <?php endif; ?></p>
+        <?php elseif($message = Session::get('success')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php echo e($message); ?>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-success">Data Batch</h6>
+                    <a href="<?php echo e(route('batches.create')); ?>" class="btn btn-outline-success">Record New Batch</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="<?php echo e(route('record-batch.create')); ?>" class="btn btn-outline-success">Record New Batch</a>
-                        <br>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
@@ -52,12 +60,12 @@
                                         <td><?php echo e($dataBatch->expiryDate); ?></td>
                                         <td><?php echo e($dataBatch->qtyAvailable); ?></td>
                                     </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
-                        </table>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
     </div>
     <!-- /.container-fluid -->

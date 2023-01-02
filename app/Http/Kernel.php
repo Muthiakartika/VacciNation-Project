@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\healthcareAdmin;
-use App\Http\Middleware\patient;
+use App\Http\Middleware\HealthcareAdmin;
+use App\Http\Middleware\localization;
+use App\Http\Middleware\Patient;
+use App\Http\Middleware\SuperAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -39,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            localization::class,
         ],
 
         'api' => [
@@ -65,8 +68,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'SuperAdmin' => \App\Http\Middleware\SuperAdmin::class,
-        'healthcareadmin' => healthcareAdmin::class,
-        'patient' => patient::class,
+        'sAdmin' => SuperAdmin::class,
+        'hAdmin' => HealthcareAdmin::class,
+        'patient' => Patient::class,
     ];
 }

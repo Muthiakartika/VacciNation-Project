@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class vaccination extends Model
+class Vaccination extends Model
 {
     use HasFactory;
-
-    protected $table = 'vaccinations';
-    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
      */
     protected $fillable = [
+        'patientName',
+        'email',
         'batchNo',
         'appointmentDate',
         'vaccineDose',
         'status',
         'remarks',
-        'name',
     ];
 }

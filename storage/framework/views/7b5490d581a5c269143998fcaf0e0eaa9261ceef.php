@@ -11,7 +11,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="<?php echo e(asset('orthoc/images/favicon.png')); ?>" type="">
+    <link rel="shortcut icon" href="<?php echo e(asset('orthoc/images/favicon2.png')); ?>" type="">
 
     <title> VacciNation </title>
 
@@ -64,20 +64,20 @@
                             <a class="nav-link" href="">Contact Us</a>
                         </li>
                         <?php if(Route::has('login')): ?>
-                                <?php if(auth()->guard()->check()): ?>
+                            <?php if(auth()->guard()->check()): ?>
                                 <li class="nav-item">
                                     <a href="<?php echo e(url('/home')); ?>" class="nav-link">Home</a>
                                 </li>
-                                <?php else: ?>
+                            <?php else: ?>
                                 <li class="nav-item">
                                     <a href="<?php echo e(route('login')); ?>" class="nav-link">Log in</a>
                                 </li>
-                                    <?php if(Route::has('register')): ?>
+                                <?php if(Route::has('register')): ?>
                                     <li class="nav-item">
                                         <a href="<?php echo e(route('register')); ?>" class="nav-link">Register</a>
                                     </li>
-                                    <?php endif; ?>
                                 <?php endif; ?>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -100,11 +100,11 @@
                                     <p>
                                         Facilitate the community in getting the COVID-19 vaccine easily in order to make Indonesia a fully vaccinated nation.
                                     </p>
-
-
-
-
-
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -121,11 +121,11 @@
                                     <p>
                                         -Joko Widodo, President of the Republic of Indonesia
                                     </p>
-
-
-
-
-
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
             <ol class="carousel-indicators">
                 <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
                 <li data-target="#customCarousel1" data-slide-to="1"></li>
-
+                
             </ol>
         </div>
 
@@ -244,7 +244,7 @@
                 <div class="detail-box">
                     <div class="heading_container">
                         <h2>
-                            About <span>Us</span>
+                            About <span>VacciNation</span>
                         </h2>
                     </div>
                     <p>
@@ -266,163 +266,163 @@
 
 <!-- doctor section -->
 
-<section class="doctor_section layout_padding">
-    <div class="container">
-        <div class="heading_container heading_center">
-            <h2>
-                Our Doctors
-            </h2>
-            <p class="col-md-10 mx-auto px-0">
-                Incilint sapiente illo quo praesentium officiis laudantium nostrum, ad adipisci cupiditate sit, quisquam aliquid. Officiis laudantium fuga ad voluptas aspernatur error fugiat quos facilis saepe quas fugit, beatae id quisquam.
-            </p>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 mx-auto">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="<?php echo e(asset('orthoc/images/d1.jpg')); ?>" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <div class="social_box">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <h5>
-                            Elina Josh
-                        </h5>
-                        <h6 class="">
-                            Doctor
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 mx-auto">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="<?php echo e(asset('orthoc/images/d2.jpg')); ?>" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <div class="social_box">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <h5>
-                            Adam View
-                        </h5>
-                        <h6 class="">
-                            Doctor
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 mx-auto">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="<?php echo e(asset('orthoc/images/d3.jpg')); ?>" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <div class="social_box">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <h5>
-                            Mia Mike
-                        </h5>
-                        <h6 class="">
-                            Doctor
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="btn-box">
-            <a href="">
-                View All
-            </a>
-        </div>
-    </div>
-</section>
 
-<!-- end doctor section -->
 
-<!-- contact section -->
-<section class="contact_section layout_padding">
-    <div class="container">
-        <div class="heading_container">
-            <h2>
-                Get In Touch
-            </h2>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form_container contact-form">
-                    <form action="">
-                        <div class="form-row">
-                            <div class="col-lg-6">
-                                <div>
-                                    <input type="text" placeholder="Your Name" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div>
-                                    <input type="text" placeholder="Phone Number" />
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <input type="email" placeholder="Email" />
-                        </div>
-                        <div>
-                            <input type="text" class="message-box" placeholder="Message" />
-                        </div>
-                        <div class="btn_box">
-                            <button>
-                                SEND
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="map_container">
-                    <div class="map">
-                        <div id="googleMap"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- end contact section -->
 
 <!-- client section -->
@@ -529,40 +529,36 @@
                         Reach at..
                     </h4>
                     <div class="contact_link_box">
-                        <a href="">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <span>
-                  Location
-                </span>
-                        </a>
-                        <a href="">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            <span>
-                  Call +01 1234567890
-                </span>
-                        </a>
+
+
+
+
+
+
+
+
+
+
                         <a href="">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <span>
-                  vaccination_superadmin@gmail.com
-                </span>
+                            <span>vnsuper2022@gmail.com</span>
                         </a>
                     </div>
                 </div>
-                <div class="footer_social">
-                    <a href="">
-                        <i class="fa fa-google" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <div class="col-md-6 col-lg-3 footer_col">
                 <div class="footer_detail">
@@ -574,7 +570,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-2 mx-auto footer_col">
+            <div class="col-md-6 col-lg-3 mx-auto footer_col">
                 <div class="footer_link_box">
                     <h4>
                         Links
@@ -603,23 +599,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 footer_col ">
-                <h4>
-                    Newsletter
-                </h4>
-                <form action="#">
-                    <input type="email" placeholder="Enter email" />
-                    <button type="submit">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
         <div class="footer-info">
             <p>
                 &copy; <span id="displayYear"></span> VacciNation
-
-
+                
+                
             </p>
 
         </div>

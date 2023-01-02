@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Auth;
-use Illuminate\Support\Facades\Validator;
+use Stevebauman\Location\Facades\Location;
 
 class HomeController extends Controller
 {
@@ -16,7 +13,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -26,23 +24,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
 
-        if(auth()->user()->role == 'SuperAdmin')
-        {
-            return view('superadmin.superadmin-home');
-        }
-        elseif (auth()->user()->role == 'HealthcareAdmin')
-        {
-            return view('adminhealthcare.adminhc-home');
-        }
-        elseif (auth()->user()->role == 'Patient')
-        {
-            return view('patient.patient-home');
-        }
-        else
-        {
-            return view('welcome');
-        }
+    public function superHome()
+    {
+        return view('superAdmin.home');
+    }
+
+    public function healthcareHome()
+    {
+        return view('healthcareAdmin.home');
+    }
+
+    public function patientHome()
+    {
+        return view('patient.home');
     }
 
 }

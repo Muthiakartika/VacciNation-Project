@@ -1,0 +1,19 @@
+{
+    "english": "English",
+    "indonesian": "Indonesian",
+    "add-healthcare" : "Add Healthcare Centre",
+    "add-vaccine" : "Add New Vaccine",
+    "regis-healthcare" : "Register Healthcare Admin",
+    "vaccine-history" : "View Vaccination History",
+    "record-vaccine" : "Record Vaccine Batch",
+    "vaccine-info" : "View Vaccination Information",
+    "request-vaccination" : "Request Vaccination Appointment",
+    "view-status" : "View Vaccination Status",
+    "view-queue" : "View Vaccination Queue",
+    "manage profile" : "Manage Profile",
+    "logout" : "Logout",
+    "change password" : "Change Password",
+    "profile update" : "Profile Update",
+    "healthcare": "Healthcare Centre",
+    "patient": "Patient"
+}

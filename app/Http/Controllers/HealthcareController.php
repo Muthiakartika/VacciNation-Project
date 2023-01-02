@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\healthcare;
+use App\Models\Healthcare;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HealthcareController extends Controller
 {
@@ -14,9 +16,9 @@ class HealthcareController extends Controller
      */
     public function index()
     {
-        $healthcare = healthcare::latest()->paginate(5);
+        $healthcare = Healthcare::all();
         return view('healthcare.index', compact('healthcare'))
-            ->with('i', (request()->input('page', 1)-1)*5);
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -38,37 +40,48 @@ class HealthcareController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validateData = $request->validate([
+        $request->validate([
             'centreName' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'optDay' => 'required',
-            'img' => 'required|image|file|max:2048',
-
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'img' => 'required|image|file|max:2048'
         ]);
 
         //validate if there is an image
         if($request->file('img'))
         {
-            $validateData['img'] = $request->file('img')->store('images');
+            $request->img = $request->file('img')->store('images');
         }
+
         // create healthcare object
-        healthcare::create($validateData);
+        healthcare::create([
+            'centreName' => $request->centreName,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'optDay' => $request->optDay,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'img' => $request->img,
+            'centreCode' => Str::substr($request->centreName,0,2)
+        ]);
 
         //redirect to registration form
-        return redirect()->route('add-healthcare.index')
+        return redirect()->route('healthcare.index')
             ->with('success', "Healthcare data added successfully");
 //        return $request;
+//        dd($validateData);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\healthcare  $healthcare
+     * @param  \App\Models\Healthcare  $healthcare
      * @return \Illuminate\Http\Response
      */
-    public function show(healthcare $healthcare)
+    public function show(Healthcare $healthcare)
     {
         //
     }
@@ -76,10 +89,10 @@ class HealthcareController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\healthcare  $healthcare
+     * @param  \App\Models\Healthcare  $healthcare
      * @return \Illuminate\Http\Response
      */
-    public function edit(healthcare $healthcare)
+    public function edit(Healthcare $healthcare)
     {
         //
     }
@@ -88,10 +101,10 @@ class HealthcareController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\healthcare  $healthcare
+     * @param  \App\Models\Healthcare  $healthcare
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, healthcare $healthcare)
+    public function update(Request $request, Healthcare $healthcare)
     {
         //
     }
@@ -99,10 +112,10 @@ class HealthcareController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\healthcare  $healthcare
+     * @param  \App\Models\Healthcare  $healthcare
      * @return \Illuminate\Http\Response
      */
-    public function destroy(healthcare $healthcare)
+    public function destroy(Healthcare $healthcare)
     {
         //
     }
